@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import DropDown from './Components/DropDown';
+import Films from './Views/Films';
+import People from './Views/People';
+import Planets from './Views/Planet';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <h1>Star Wars API</h1>
+      <DropDown />
+        <Switch>
+          <Route exact path='/planets/:id'>
+            <Planets />
+          </Route>
+          <Route exact path='/people/:id'>
+            <People />
+          </Route>
+          <Route exact path='/films/:id'>
+            <Films />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      
     </div>
   );
 }
